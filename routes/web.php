@@ -18,8 +18,9 @@ Route::get('/basket', 'BasketController@basket')->name('basket');
 
 Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place');
 
+Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
+
 Route::get('/{category}', 'MainController@сategory')->name('category');
 
 Route::get('/{category}/{product?}', 'MainController@product')->name('product');
 
-Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
