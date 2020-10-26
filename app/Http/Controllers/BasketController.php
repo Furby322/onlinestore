@@ -26,6 +26,6 @@ class BasketController extends Controller
         $order->products()->attach($productId);
 
         dump($order->products);
-        dump($order);
+        
     }
 }
