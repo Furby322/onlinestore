@@ -45,7 +45,7 @@
                 @endguest
 
                 @auth
-                    <li><a href="{{ route('home') }}">Панель пдминистратора</a></li>
+                    <li><a href="{{ route('home') }}">Панель Aдминистратора</a></li>
                     <li><a href="{{ route('get-logout') }}">Выйти</a></li>
                 @endauth
             </ul>
