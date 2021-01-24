@@ -21,6 +21,9 @@
                     Цена
                 </th>
                 <th>
+                    Кол-во
+                </th>
+                <th>
                     Категория
                 </th>
 {{--                <th>--}}
@@ -36,6 +39,7 @@
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->count }}</td>
                     <td>{{ $product->category->name }}</td>
 {{--                    <td></td>--}}
                     <td>

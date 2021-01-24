@@ -20,11 +20,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($order->products as $product)
+                        @foreach ($products as $product)
                             <tr>
                                 <td>
 {{--                                    <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code, $sku]) }}">--}}
-                                    <a href="{{ route('product', $product) }}">
+                                    <a href="{{ route('product', [$product->category->code ,$product->code]) }}">
                                         <img height="56px"
                                              src="{{ Storage::url($product->image) }}">
                                         {{ $product->name }}
@@ -41,7 +41,7 @@
                         <tr>
                             <td colspan="3">Общая стоимость:</td>
 {{--                            <td>{{ $order->sum }} {{ $order->currency->symbol }}</td>--}}
-                            <td>{{ $order->getFullPrice() }} rub.</td>
+                            <td>{{ $order->calculateFullSum() }} rub.</td>
                         </tr>
 {{--                        @if($order->hasCoupon())--}}
 {{--                            <tr>--}}

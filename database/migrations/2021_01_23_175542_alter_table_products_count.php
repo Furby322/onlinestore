@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableProducts extends Migration
+class AlterTableProductsCount extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class AlterTableProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->tinyInteger('new_item')->default(0);
-            $table->tinyInteger('hit')->default(0);
-            $table->tinyInteger('recommend')->default(0);
+            $table->unsignedInteger('count')->default('0');
+            $table->softDeletes();
         });
     }
 
@@ -28,9 +27,8 @@ class AlterTableProducts extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('new_item');
-            $table->dropColumn('hit');
-            $table->dropColumn('recommend');
+            $table->dropColumn('count');
+            $table->dropColumn('deleted_at');
         });
     }
 }

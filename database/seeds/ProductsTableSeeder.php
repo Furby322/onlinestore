@@ -20,6 +20,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '69990',
                 'category_id' => 1,
                 'image' => 'products/iphone_12_mini.jpg',
+                'count' => 10,
             ],
             [
                 'name' => 'iPhone 12 128GB',
@@ -28,6 +29,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '79990',
                 'category_id' => 1,
                 'image' => 'products/iphone_12.jpg',
+                'count' => 10,
             ],
             [
                 'name' => 'Redmi AirDots',
@@ -36,6 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '1990',
                 'category_id' => 2,
                 'image' => 'products/redmi_airdots.jpg',
+                'count' => 10,
             ],
             [
                 'name' => 'Sony XDR1000',
@@ -44,6 +47,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '13990',
                 'category_id' => 2,
                 'image' => 'products/sony_xdr1000.jpg',
+                'count' => 10,
             ],
             [
                 'name' => 'DeLongi',
@@ -52,6 +56,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '22990',
                 'category_id' => 2,
                 'image' => 'products/delongi.jpg',
+                'count' => 10,
             ],
             [
                 'name' => 'Scarlett',
@@ -60,6 +65,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '560',
                 'category_id' => 3,
                 'image' => 'products/scarlett.jpg',
+                'count' => 10,
             ],
         ]);
     }

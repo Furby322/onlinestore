@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -85,6 +85,7 @@ class ProductsController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $params = $request->all();
+
         unset($params['image']);
         if ($request->has('image')) {
             Storage::delete($product->image);
@@ -92,13 +93,18 @@ class ProductsController extends Controller
             $params['image'] = $path;
         };
 
-        foreach (['new', 'hit', 'recommend'] as $fieldName) {
+        foreach (['new_item', 'hit', 'recommend'] as $fieldName) {
             if (!isset($params[$fieldName])) {
                 $params[$fieldName] = 0;
+            }
+            else
+            {
+                $params[$fieldName] = 1;
             }
         }
 
         $product->update($params);
+
         return redirect()->route('products.index');
     }
 

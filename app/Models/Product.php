@@ -1,18 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-//    public function getCategory()
-//    {
-//        return Category::find($this->category_id);
-//    }
+    use SoftDeletes;
 
     protected $fillable = [
-        'name', 'code', 'price', 'category_id', 'description', 'image', 'new', 'hit', 'recommend'
+        'name', 'code', 'price', 'category_id', 'description', 'image', 'new_item', 'hit', 'recommend', 'count'
     ];
 
     public function category()
@@ -29,9 +27,29 @@ class Product extends Model
         return $this->price;
     }
 
+    public function scopeByCode($query, $code)
+    {
+        return $query->where('code', $code);
+    }
+
+    public function scopeHit($query)
+    {
+        return $query->where('hit', 1);
+    }
+
+    public function scopeNew_item($query)
+    {
+        return $query->where('new_item', 1);
+    }
+
+    public function scopeRecommend($query)
+    {
+        return $query->where('recommend', 1);
+    }
+
     public function setNewAttribute($value)
     {
-        $this->attributes['new'] = $value == 'on' ? 1 : 0;
+        $this->attributes['new_item'] = $value == 'on' ? 1 : 0;
     }
 
     public function setHitAttribute($value)
@@ -44,6 +62,11 @@ class Product extends Model
         $this->attributes['recommend'] = $value === 'on' ? 1 : 0;
     }
 
+    public function isAvailable()
+    {
+        return !$this->trashed() && $this->count > 0;
+    }
+
     public function isHit()
     {
         return $this->hit === 1;
@@ -51,7 +74,7 @@ class Product extends Model
 
     public function isNew()
     {
-        return $this->new === 1;
+        return $this->new_item === 1;
     }
 
     public function isRecommend()

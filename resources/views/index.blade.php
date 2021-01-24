@@ -16,12 +16,14 @@
             </div>
             <div class="col-sm-2 col-md-2">
                 <label for="hit">
-                    <input type="checkbox" name="hit" id="hit" @if(request()->has('hit')) checked @endif> Хит
+                    <input type="checkbox" name="hit" id="hit"
+                           @if(request()->has('hit')) checked @endif> Хит
                 </label>
             </div>
             <div class="col-sm-2 col-md-2">
-                <label for="new">
-                    <input type="checkbox" name="new" id="new" @if(request()->has('new')) checked @endif> Новинка
+                <label for="new_item">
+                    <input type="checkbox" name="new_item" id="new_item"
+                           @if(request()->has('new_item')) checked @endif> Новинка
                 </label>
             </div>
             <div class="col-sm-2 col-md-2">
@@ -45,7 +47,7 @@
         'price_from' => request()->price_from,
         'price_to'   => request()->price_to,
         'hit'=> request()->hit,
-        'new'=> request()->new,
+        'new_item'=> request()->new_item,
         'recommend'  => request()->recommend,
     ])->links() }}
 @endsection

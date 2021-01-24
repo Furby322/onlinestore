@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Auth::routes([
     'reset' => false,
     'confirm' => false,
@@ -57,13 +59,13 @@ Route::get('/сategories', 'MainController@сategories')->name('categories');
 
 Route::group(['prefix' => 'basket'], function ()
 {
-    Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
+    Route::post('/basket/add/{product}', 'BasketController@basketAdd')->name('basket-add');
 
     Route::group(['middleware' => 'basket_not_empty'], function ()
     {
         Route::get('/', 'BasketController@basket')->name('basket');
         Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
-        Route::post('/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
+        Route::post('/remove/{product}', 'BasketController@basketRemove')->name('basket-remove');
         Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm');
     });
 });
@@ -73,6 +75,6 @@ Route::group(['prefix' => 'basket'], function ()
 
 
 
-Route::get('/{category}', 'MainController@сategory')->name('category');
+Route::get('/{category}', 'MainController@category')->name('category');
 Route::get('/{category}/{product?}', 'MainController@product')->name('product');
 
